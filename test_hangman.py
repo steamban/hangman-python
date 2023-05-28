@@ -3,6 +3,8 @@ import tempfile
 
 import hangman
 
+import pytest
+
 # Tests for get_random_word
 
 def test_select_random_word_min_length():
@@ -53,9 +55,24 @@ def test_select_random_word_no_repetitions():
     
 ##
 
-# Tests for get_partial_solution
+# Tests for get_partial_solution 
 
 def test_partial_solution_normal_input():
     assert hangman.get_partial_solution("pineapples") == "__________"
+
+##
+
+# Tests for display_hangman
+
+def test_display_hangman_normal_input():
+    assert hangman.display_hangman(4) == """+---,
+|   o
+|  /|
+|
+^"""
+
+def test_display_hangman_out_of_bounds():
+    with pytest.raises(IndexError):
+        hangman.display_hangman(-10)
 
 ##
