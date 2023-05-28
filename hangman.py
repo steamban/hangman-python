@@ -7,7 +7,7 @@ def get_random_word(wordfile="/usr/share/dict/wordlist-probable.txt"):
     with open(wordfile) as f:
         for word in f:
             word = word.strip()
-            if len(word) >= 8 and word.islower() and word.isalpha():
+            if len(word) >= 7 and word.islower() and word.isalpha():
                 candidate_words.append(word)
     word = random.choice(candidate_words)
 
@@ -35,11 +35,11 @@ def play_game():
     wrong_guesses = []
     partial_solution = get_partial_solution(mystery_word)
 
-    
-    display_hangman(len(wrong_guesses))
+    # print once
+    print(display_hangman(len(wrong_guesses)))
     print(display_word_and_guesses(partial_solution, wrong_guesses))
 
-    while partial_solution != mystery_word:
+    while partial_solution != mystery_word and len(wrong_guesses) < len(ascii_art.gallows) - 1:
         guess = get_user_input()
 
         if guess in mystery_word:
