@@ -3,6 +3,8 @@ import tempfile
 
 import hangman
 
+# Tests for get_random_word
+
 def test_select_random_word_min_length():
     # create temporary file
     name = tempfile.mktemp()
@@ -49,3 +51,11 @@ def test_select_random_word_no_repetitions():
         secret_words.add(hangman.get_random_word())
     assert len(secret_words) == 10
     
+##
+
+# Tests for get_partial_solution
+
+def test_partial_solution_normal_input():
+    assert hangman.get_partial_solution("pineapples") == "__________"
+
+##
