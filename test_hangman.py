@@ -84,3 +84,52 @@ def test_display_word_and_guesses_normal_input():
 
 def test_display_word_and_guesses_empty_guess():
     assert hangman.display_word_and_guesses("_________", []) == "Mystery Word = _________, Wrong Guesses = []"
+
+##
+
+# Tests for update_masked_word
+
+def test_update_masked_word_no_guesses():
+    assert hangman.update_masked_word("hangman", "_______") == ("_______", [' '])
+
+def test_update_masked_word_wrong_guesses():
+    assert hangman.update_masked_word("hangman", "______n", 'p', ['y', 'u']) == ("______n", ['y', 'u', 'p'])
+
+def test_update_masked_word_correct_guesses_multiple_positions():
+    assert hangman.update_masked_word("hangman", "h__gm__", 'a', ['y', 'u']) == ("ha_gma_", ['y', 'u'])
+
+def test_update_masked_word_correct_guess():
+    assert hangman.update_masked_word("hangman", "ha__ma_", 'g', ['y', 'u']) == ("ha_gma_", ['y', 'u'])
+
+def test_update_masked_word_repeated_guess():
+    assert hangman.update_masked_word("hangman", "ha_gma_", 'g', ['y', 'u']) == ("ha_gma_", ['y', 'u'])
+
+##
+
+# Tests for check_game_over 
+
+def test_check_game_over_win():
+    assert hangman.check_game_over('hangman', 'hangman') == 'You Win!';
+
+def test_check_game_over_lose():
+    assert hangman.check_game_over('hangman', '_angman') == 'You Lose!, the Mystery Word was -> hangman'
+
+##
+
+# Tests for check_game_loop
+
+def test_check_game_loop_next_turn():
+    assert hangman.check_game_loop('_angman', 'hangman', ['z', 'y']) == True
+
+def test_check_game_loop_win():
+    assert hangman.check_game_loop('hangman', 'hangman', ['z', ]) == False
+
+def test_check_game_loop_empty_wrong_guess():
+    assert hangman.check_game_loop('hangman', 'hangman') == False
+
+def test_check_game_loop_out_of_turns():
+    assert hangman.check_game_loop('_ang_an', 'hangman', ['z', 'x', 'o', 'r', 'l', 'k', 'y']) == False
+
+##
+
+# Tests display_game_status()

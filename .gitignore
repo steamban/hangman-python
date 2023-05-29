@@ -3,3 +3,4 @@ __pycache__
 .vscodeignore
 .vscodeignore.bak
 .coverage
+.pytest_cache
