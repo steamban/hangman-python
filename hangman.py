@@ -59,7 +59,7 @@ def check_game_loop(partial_solution, mystery_word, wrong_guesses=[]):
     return False
 
 
-def display_game_status(partial_solution, wrong_guesses=[]):
+def display_game_status(partial_solution, wrong_guesses):
     print(display_hangman(len(wrong_guesses)))
     print(display_word_and_guesses(partial_solution, wrong_guesses))
 
@@ -70,12 +70,12 @@ def main():
     partial_solution = get_partial_solution(mystery_word)
 
     # print once
-    display_game_status(wrong_guesses, partial_solution)
+    display_game_status(partial_solution, wrong_guesses)
 
     while check_game_loop(partial_solution, mystery_word, wrong_guesses):
         guess = get_user_input()
         partial_solution, wrong_guesses = update_masked_word(mystery_word, partial_solution, guess, wrong_guesses)
-        display_game_status(wrong_guesses, partial_solution)
+        display_game_status(partial_solution, wrong_guesses)
 
     print(check_game_over(mystery_word, partial_solution))
 

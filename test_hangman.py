@@ -131,5 +131,3 @@ def test_check_game_loop_out_of_turns():
     assert hangman.check_game_loop('_ang_an', 'hangman', ['z', 'x', 'o', 'r', 'l', 'k', 'y']) == False
 
 ##
-
-# Tests display_game_status()
