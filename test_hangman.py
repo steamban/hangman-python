@@ -76,3 +76,11 @@ def test_display_hangman_out_of_bounds():
         hangman.display_hangman(-10)
 
 ##
+
+# Tests for display_word_and_guesses
+
+def test_display_word_and_guesses_normal_input():
+    assert hangman.display_word_and_guesses("_______", ['p', 'e']) == "Mystery Word = _______, Wrong Guesses = ['p', 'e']"
+
+def test_display_word_and_guesses_empty_guess():
+    assert hangman.display_word_and_guesses("_________", []) == "Mystery Word = _________, Wrong Guesses = []"
