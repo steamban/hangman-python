@@ -2,7 +2,7 @@ import random
 import ascii_art
 
 
-def get_random_word(wordfile="/usr/share/dict/wordlist-probable.txt"):
+def get_random_word(wordfile="wordlist.txt"):
     candidate_words = []
     with open(wordfile) as f:
         for word in f:
