@@ -4,3 +4,4 @@ __pycache__
 .vscodeignore.bak
 .coverage
 .pytest_cache
+htmlcov
